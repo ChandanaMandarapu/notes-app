@@ -25,3 +25,9 @@ these happen when the problem is on user's side meaning your browser or app made
 403 Forbiddden - You are nor allowed to access this
 404 Not Found - URL doesnt exist
 429 Too many requests
+
+5xx - Server Errors 
+These happen when something goes wrong on the server side even though the client made a valid request
+
+500 Internal server error - something broke on server
+503 service unaviable - server is temporirily overloaded or down 
