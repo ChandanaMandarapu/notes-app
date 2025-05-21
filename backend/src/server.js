@@ -1,13 +1,21 @@
-import express from "express"
-import notesRoutes from "./routes/notesRoutes.js"
-// const express = require("express")
-// first api  
+import express from "express";
+import notesRoutes from "./routes/notesRoutes.js";
+import { connectDB } from "../config/db.js";
+import dotenv from "dotenv";
 
-const app = express()
-app.use("./api/notes",notesRoutes)
+dotenv.config()
+const app = express();
+const PORT = process.env.PORT || 5001
+console.log(process.env.MONGO_URI)
+// Middleware to parse JSON
+app.use(express.json());
 
-// route or a endpoint enpoint is a combination of a url a http method that lets the client interact with a specific resource
+// Connect to the database
+connectDB();
 
-app.listen(5001,() => {
-    console.log("server started on port")
-})
+// Fix the route path (remove the dot!)
+app.use("/api/notes", notesRoutes);
+
+app.listen(5001, () => {
+  console.log("Server started on port 5001");
+});
